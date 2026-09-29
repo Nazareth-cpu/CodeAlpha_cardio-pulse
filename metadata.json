@@ -1,0 +1,8 @@
+{
+  "name": "CardioPulse - Heart Disease Risk Assessment",
+  "description": "Production-grade clinical ML risk prediction and model insights based on the UCI Cleveland Heart Disease dataset.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

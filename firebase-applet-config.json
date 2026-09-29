@@ -1,0 +1,12 @@
+{
+  "projectId": "cardio-pulse",
+  "appId": "1:1087640531916:web:68ddf2218b164a1d08a369",
+  "apiKey": "AIzaSyB9qI44ZRMTEt_qqk20Ryhu3uKS4Uy_AA0",
+  "authDomain": "cardio-pulse.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-cardiopulseheart-f31cb070-e415-430b-affb-3b2b02db7684",
+  "storageBucket": "cardio-pulse.firebasestorage.app",
+  "messagingSenderId": "1087640531916",
+  "measurementId": "G-T88DTD6ZEY",
+  "oAuthClientId": "1087640531916-cardiopulse.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
+}

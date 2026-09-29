@@ -1,0 +1,78 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and metadata document",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase user identifier",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified user email address",
+          "maxLength": 254
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "User account creation timestamp"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "User account last modification timestamp"
+        }
+      },
+      "required": ["uid"]
+    },
+    "Prediction": {
+      "title": "Prediction",
+      "description": "Authoritative clinical risk assessment record",
+      "type": "object",
+      "properties": {
+        "prediction_id": {
+          "type": "string",
+          "description": "Unique prediction record identifier",
+          "maxLength": 128
+        },
+        "user_id": {
+          "type": "string",
+          "description": "Owner Firebase UID",
+          "maxLength": 128
+        },
+        "input": {
+          "type": "object",
+          "description": "13 canonical clinical input attributes"
+        },
+        "result": {
+          "type": "object",
+          "description": "Prediction result and probability"
+        },
+        "model": {
+          "type": "object",
+          "description": "Model name and artifact version"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp"
+        }
+      },
+      "required": ["prediction_id", "user_id", "input", "result", "model", "created_at"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User metadata document scoped by verified UID"
+    },
+    "/users/{userId}/predictions/{predictionId}": {
+      "schema": "Prediction",
+      "description": "Authoritative prediction records written only via backend Admin SDK and read-scoped to the owning user"
+    }
+  }
+}

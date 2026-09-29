@@ -1,0 +1,85 @@
+{
+  "models": {
+    "logistic_regression": {
+      "id": "logistic_regression",
+      "display_name": "Logistic Regression",
+      "artifact": "logistic_regression.joblib",
+      "version": "v1",
+      "description": "Regularized linear classification model with standard scaling and calibrated probability estimation.",
+      "metrics": {
+        "accuracy": 0.8852,
+        "precision": 0.8387,
+        "recall": 0.9286,
+        "f1_score": 0.8814,
+        "roc_auc": 0.9665
+      },
+      "confusion_matrix": {
+        "TN": 28,
+        "FP": 5,
+        "FN": 2,
+        "TP": 26
+      }
+    },
+    "svm": {
+      "id": "svm",
+      "display_name": "Support Vector Machine",
+      "artifact": "svm.joblib",
+      "version": "v1",
+      "description": "Margin-based classifier with radial basis function kernel and calibrated probability estimation.",
+      "metrics": {
+        "accuracy": 0.8852,
+        "precision": 0.8387,
+        "recall": 0.9286,
+        "f1_score": 0.8814,
+        "roc_auc": 0.9643
+      },
+      "confusion_matrix": {
+        "TN": 28,
+        "FP": 5,
+        "FN": 2,
+        "TP": 26
+      }
+    },
+    "random_forest": {
+      "id": "random_forest",
+      "display_name": "Random Forest",
+      "artifact": "random_forest.joblib",
+      "version": "v1",
+      "description": "Ensemble of 300 decision trees trained with bootstrap aggregating.",
+      "metrics": {
+        "accuracy": 0.8689,
+        "precision": 0.8125,
+        "recall": 0.9286,
+        "f1_score": 0.8667,
+        "roc_auc": 0.9443
+      },
+      "confusion_matrix": {
+        "TN": 27,
+        "FP": 6,
+        "FN": 2,
+        "TP": 26
+      }
+    },
+    "xgboost": {
+      "id": "xgboost",
+      "display_name": "XGBoost",
+      "artifact": "xgboost.joblib",
+      "version": "v1",
+      "description": "Gradient-boosted decision trees with regularized objective optimization.",
+      "metrics": {
+        "accuracy": 0.9016,
+        "precision": 0.8438,
+        "recall": 0.9643,
+        "f1_score": 0.9000,
+        "roc_auc": 0.9437
+      },
+      "confusion_matrix": {
+        "TN": 28,
+        "FP": 5,
+        "FN": 2,
+        "TP": 26
+      }
+    }
+  },
+  "default_model_id": "logistic_regression"
+}

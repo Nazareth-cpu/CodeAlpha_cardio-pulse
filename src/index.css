@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Brand Design Tokens */
+  --color-primary: #087F5B;
+  --color-primary-hover: #066749;
+  --color-primary-active: #05543c;
+  --color-primary-light: #E6F3EF;
+
+  --color-secondary: #14B8A6;
+  --color-secondary-hover: #0D9488;
+  --color-secondary-light: #E6FFFA;
+
+  --color-accent: #F4B942;
+  --color-accent-hover: #DE9E27;
+  --color-accent-light: #FEF8EC;
+
+  --color-brand-bg: #F6FAF8;
+  --color-brand-text: #12231E;
+  --color-brand-muted: #65756F;
+
+  /* Semantic Feedback Tokens */
+  --color-success: #059669;
+  --color-success-light: #ECFDF5;
+  --color-warning: #D97706;
+  --color-warning-light: #FFFBEB;
+  --color-error: #DC2626;
+  --color-error-light: #FEF2F2;
+  --color-info: #0284C7;
+  --color-info-light: #F0F9FF;
+}
+
+:root {
+  color-scheme: light;
+  font-family: var(--font-sans);
+  background-color: #F6FAF8;
+  color: #12231E;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #F6FAF8;
+  color: #12231E;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible focus ring style */
+:focus-visible {
+  outline: 2px solid #087F5B;
+  outline-offset: 2px;
+}
+
+/* Hero Heart Animation Keyframes & Performance Classes */
+@keyframes heartbeat-rhythm {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.05) rotate(-0.5deg);
+  }
+  24% {
+    transform: scale(1.015) rotate(0deg);
+  }
+  38% {
+    transform: scale(1.065) rotate(0.5deg);
+  }
+  58% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes orbital-spin-cw {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbital-spin-ccw {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes vascular-glow {
+  0%, 100% {
+    opacity: 0.75;
+    stroke-width: 1.5;
+  }
+  38% {
+    opacity: 1;
+    stroke-width: 2.2;
+  }
+}
+
+@keyframes particle-beacon {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+.animate-heartbeat {
+  transform-origin: center center;
+  animation: heartbeat-rhythm 1.6s cubic-bezier(0.21, 0.61, 0.35, 1) infinite;
+  will-change: transform;
+}
+
+.animate-orbital-1 {
+  transform-origin: center center;
+  animation: orbital-spin-cw 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-orbital-2 {
+  transform-origin: center center;
+  animation: orbital-spin-ccw 36s linear infinite;
+  will-change: transform;
+}
+
+.animate-orbital-3 {
+  transform-origin: center center;
+  animation: orbital-spin-cw 44s linear infinite;
+  will-change: transform;
+}
+
+.animate-gentle-float {
+  animation: gentle-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-vascular {
+  animation: vascular-glow 1.6s ease-in-out infinite;
+}
+
+.animate-particle {
+  animation: particle-beacon 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-heartbeat,
+  .animate-orbital-1,
+  .animate-orbital-2,
+  .animate-orbital-3,
+  .animate-gentle-float,
+  .animate-vascular,
+  .animate-particle {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+

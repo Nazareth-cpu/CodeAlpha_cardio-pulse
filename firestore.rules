@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // User accounts collection
+    match /users/{userId} {
+      // Users can only read their own user profile document. Blanket user listing is blocked.
+      allow get: if isOwner(userId) && isValidId(userId);
+      allow list: if false;
+
+      // Allow users to update their non-sensitive metadata, with strict key validation
+      allow create, update: if isOwner(userId) && isValidId(userId)
+        && request.resource.data.uid == userId
+        && request.resource.data.keys().hasAll(['uid'])
+        && request.resource.data.keys().hasOnly(['uid', 'email', 'created_at', 'updated_at']);
+      allow delete: if false;
+
+      // Subcollection: Prediction history
+      // Note: Authoritative prediction writes are performed exclusively by the FastAPI backend
+      // using the Firebase Admin SDK (which bypasses security rules).
+      // Direct client-side mutation of clinical predictions is strictly forbidden.
+      match /predictions/{predictionId} {
+        allow get: if isOwner(userId) && isValidId(predictionId);
+        allow list: if isOwner(userId);
+        allow write: if false; // All writes are authoritative via FastAPI backend Admin SDK
+      }
+    }
+  }
+}
